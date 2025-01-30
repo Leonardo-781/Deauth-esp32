@@ -1,4 +1,4 @@
-### **Ataques e Monitoramento Wi-Fi com ESP32: Como Funcionam, Seus Impactos e Questões Éticas**
+### **Ataques e Monitoramento Wi-Fi com ESP32:**
 
 Nos últimos anos, dispositivos como **ESP32** e **ESP8266** se tornaram extremamente populares entre entusiastas de tecnologia, pesquisadores e profissionais de segurança cibernética. Esses pequenos e poderosos microcontroladores permitem a execução de diversas tarefas, desde automação residencial até projetos avançados de redes. No entanto, eles também são utilizados para algo um pouco mais delicado: **testes de segurança Wi-Fi**.
 
@@ -48,6 +48,69 @@ Esses dispositivos podem ser configurados para funcionar de forma autônoma, exi
 
 ---
 
+## **Impacto dos Sistemas no Roteador**
+
+Os roteadores são os principais alvos dos ataques realizados por esses sistemas. Aqui está um detalhamento de como essas ferramentas interagem e impactam os roteadores:
+
+🔹 Ataques de Desautenticação (Deauth):
+
+Como funciona: O sistema envia quadros de gerenciamento falsificados diretamente para o roteador (ou para os dispositivos conectados), simulando ordens de desconexão.
+Impacto: O roteador continua operando normalmente, mas dispositivos conectados são forçados a se desconectar. Em casos de ataques contínuos, o roteador pode enfrentar congestionamento devido ao envio excessivo de quadros falsos e tentativas repetidas de reconexão por parte dos dispositivos.
+Exemplo no tráfego: Quadros de desautenticação aparecerão como eventos anômalos em ferramentas como Wireshark, gerando grandes volumes de tráfego de gerenciamento em pouco tempo.
+
+🔹 Ataques de Flooding (Beacon Flooding):
+
+Como funciona: Esses ataques criam redes Wi-Fi falsas, inundando o ambiente com SSIDs fictícios, forçando o roteador a processar uma quantidade anormal de requisições.
+Impacto: Os dispositivos próximos, incluindo o roteador, podem apresentar lentidão ou falhas ao tentar identificar redes legítimas.
+
+🔹 Probe Request Spoofing:
+
+Como funciona: O sistema finge ser dispositivos próximos, enviando sondagens falsas para o roteador.
+Impacto: O roteador pode ser induzido a responder ou registrar dispositivos falsos, prejudicando seu desempenho e mascarando dispositivos legítimos.
+
+---
+
+## **Funcionalidades de Monitoramento**
+
+Além de ataques, essas ferramentas possuem funções poderosas de monitoramento de redes e análise de sinais, tornando-as úteis em diagnósticos de segurança e pesquisas. Aqui estão algumas das principais capacidades de monitoramento que elas oferecem:
+
+🔹 1. Escaneamento de Redes Wi-Fi
+Descrição: Os sistemas podem realizar varreduras de redes próximas, identificando SSIDs, BSSIDs (endereços MAC dos APs), canais de operação e potências de sinal (RSSI).
+Aplicação:
+Avaliar a densidade de redes Wi-Fi em uma área.
+Identificar pontos de acesso e dispositivos conectados.
+Exemplo de Uso no Marauder: A interface lista todas as redes detectadas, classificadas pela intensidade do sinal e canal.
+
+🔹 2. Monitoramento de Potência do Sinal
+Descrição: Esses dispositivos medem a intensidade do sinal de cada rede, permitindo monitorar a força de transmissão do roteador ou de dispositivos conectados.
+Aplicação:
+Identificar áreas com baixa cobertura Wi-Fi (zonas mortas).
+Diagnosticar falhas ou quedas de potência em APs.
+
+🔹 3. Captura de Tráfego de Rede
+Descrição: Os dispositivos podem operar em modo promiscuous (promíscuo), capturando pacotes de dados enviados na rede. Isso permite analisar:
+Tipos de pacotes (dados, gerenciamento, controle).
+Quadros de gerenciamento, como beacon, deauth, e association.
+Aplicação:
+Monitorar tráfego em tempo real para detectar anomalias.
+Usar ferramentas como Wireshark para inspecionar pacotes capturados.
+
+🔹 4. Detecção de Ataques Wi-Fi
+Descrição: Alguns sistemas, como o Bruce, têm funcionalidades para identificar ataques em andamento, como Deauth e Beacon Flooding. Isso é feito ao monitorar a frequência de quadros de gerenciamento anômalos e padrões no tráfego.
+Aplicação:
+Identificar fontes de ataques (endereços MAC falsificados).
+Alertar administradores de rede sobre comportamentos suspeitos.
+
+🔹 5. Análise de Canal e Interferência
+Descrição: Esses sistemas identificam os canais usados pelas redes Wi-Fi próximas e monitoram o tráfego em cada canal.
+Aplicação:
+Determinar o melhor canal para configurar um roteador e evitar interferências.
+Diagnosticar congestionamento em áreas densas de redes Wi-Fi.
+
+---
+
+
+
 ## **Questões Éticas e Legais**
 
 Agora, a grande pergunta: **"Eu posso usar essas ferramentas sem restrições?"**  
@@ -69,6 +132,18 @@ Se usadas de maneira mal-intencionada, essas ferramentas podem trazer sérias co
 
 ---
 
+## **Utilidade para Diagnóstico de Ataques**
+
+Ferramentas como essas são úteis para:
+
+🔹 Identificar fontes de interferência ou ataques: Com base na frequência de pacotes ou comportamento anômalo de dispositivos próximos.
+
+🔹 Analisar a saúde da rede: Monitorando conexões e tráfego para identificar gargalos ou falhas no roteador.
+
+🔹 Educação e pesquisa: Simular ataques e desenvolver contra-medidas de segurança para redes Wi-Fi.
+
+---
+
 ## **Uso Responsável e Consciente**
 
 Essas ferramentas foram criadas para **ajudar a fortalecer a segurança das redes Wi-Fi**, e não para prejudicar outras pessoas. Profissionais de segurança cibernética, pesquisadores e entusiastas podem se beneficiar muito delas quando usadas corretamente.
@@ -85,3 +160,19 @@ Dispositivos como **ESP32-Marauder**, **ESP8266 Deauther**, **M5Stick-Nemo**, **
 No entanto, seu uso deve **sempre** respeitar **questões éticas e legais**. Utilizar essas ferramentas de forma irresponsável pode prejudicar outras pessoas e levar a consequências graves.
 
 O verdadeiro objetivo dessas tecnologias é **ajudar a tornar as redes mais seguras**, fornecendo conhecimento para que possamos entender e combater ameaças cibernéticas. A informação contida neste texto tem um propósito exclusivamente **educacional e acadêmico**. O conhecimento é uma ferramenta poderosa – cabe a você usá-lo com responsabilidade! 🚀
+
+---
+
+## **Links de Sistemas Utilizados**
+
+🔗ESP32-Marauder-Cheap-Yellow-Display = https://github.com/Fr4nkFletcher/ESP32-Marauder-Cheap-Yellow-Display
+
+🔗m5stick-nemo = https://github.com/n0xa/m5stick-nemo
+
+🔗m5stick-shark = https://github.com/AH2005NA/m5stick-shark
+
+🔗esp8266_deauther = https://github.com/spacehuhntech/esp8266_deauther
+
+🔗Bruce = https://github.com/pr3y/Bruce
+
+
