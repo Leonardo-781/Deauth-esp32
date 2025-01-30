@@ -22,6 +22,7 @@ Ferramentas como **ESP32-Marauder** e **ESP8266 Deauther** se aproveitam dessa f
 ## **Monitoramento de Redes e Detecção de Ataques**
 
 Além de ataques, essas ferramentas também podem ser usadas para **monitorar redes Wi-Fi** e analisar possíveis ameaças. Isso significa que elas podem ser valiosas para **pesquisadores e profissionais de segurança**, permitindo:
+
 ✅ **Identificar redes Wi-Fi ativas** e medir a potência do sinal.  
 ✅ **Monitorar o tráfego da rede** para detectar picos de atividade suspeita.  
 ✅ **Capturar pacotes de dados** para análise, como acontece com ferramentas de pentest como Wireshark.  
